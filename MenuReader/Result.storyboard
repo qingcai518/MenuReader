@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jct-eg-5Nd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Result Controller-->
+        <scene sceneID="4Yf-dW-sn3">
+            <objects>
+                <viewController id="jTc-lK-lWq" customClass="ResultController" customModule="MenuReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wno-nr-dn6"/>
+                        <viewControllerLayoutGuide type="bottom" id="8rT-oD-j38"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hgh-Dj-h2a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8Z-1c-eMb">
+                                <rect key="frame" x="16" y="80" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIz-Qd-gja">
+                                <rect key="frame" x="0.0" y="96" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="SVl-XZ-F5T"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S96-xE-MUt">
+                                <rect key="frame" x="0.0" y="97" width="375" height="570"/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nvg-zR-dLR">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.062733002007007599" green="0.062752053141593933" blue="0.062731795012950897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="F8Z-1c-eMb" secondAttribute="trailing" constant="16" id="90n-I9-pTg"/>
+                            <constraint firstItem="pIz-Qd-gja" firstAttribute="leading" secondItem="Hgh-Dj-h2a" secondAttribute="leading" id="FPA-bZ-bJt"/>
+                            <constraint firstItem="8rT-oD-j38" firstAttribute="top" secondItem="S96-xE-MUt" secondAttribute="bottom" id="UcU-iy-r3W"/>
+                            <constraint firstItem="S96-xE-MUt" firstAttribute="leading" secondItem="Hgh-Dj-h2a" secondAttribute="leading" id="W2l-le-pun"/>
+                            <constraint firstItem="S96-xE-MUt" firstAttribute="top" secondItem="pIz-Qd-gja" secondAttribute="bottom" id="cg7-gt-74u"/>
+                            <constraint firstItem="F8Z-1c-eMb" firstAttribute="leading" secondItem="Hgh-Dj-h2a" secondAttribute="leading" constant="16" id="d4W-fv-Ybh"/>
+                            <constraint firstAttribute="trailing" secondItem="pIz-Qd-gja" secondAttribute="trailing" id="lie-xs-YdY"/>
+                            <constraint firstItem="pIz-Qd-gja" firstAttribute="top" secondItem="F8Z-1c-eMb" secondAttribute="bottom" constant="16" id="oCl-JQ-0hA"/>
+                            <constraint firstItem="Nvg-zR-dLR" firstAttribute="centerY" secondItem="Hgh-Dj-h2a" secondAttribute="centerY" id="qmc-77-7b6"/>
+                            <constraint firstItem="F8Z-1c-eMb" firstAttribute="top" secondItem="Wno-nr-dn6" secondAttribute="bottom" constant="16" id="rZl-FN-H0J"/>
+                            <constraint firstAttribute="trailing" secondItem="S96-xE-MUt" secondAttribute="trailing" id="rb0-Wg-MQl"/>
+                            <constraint firstItem="Nvg-zR-dLR" firstAttribute="centerX" secondItem="Hgh-Dj-h2a" secondAttribute="centerX" id="spj-4U-OBI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Moy-dT-5SP">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="AXk-D5-GfR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IFf-RZ-Y90">
+                                <rect key="frame" x="16" y="9" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="doClose" destination="jTc-lK-lWq" eventType="touchUpInside" id="RRC-i1-4si"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="closeBtn" destination="IFf-RZ-Y90" id="rJa-09-OLp"/>
+                        <outlet property="indicator" destination="Nvg-zR-dLR" id="qgq-to-miu"/>
+                        <outlet property="resultLbl" destination="F8Z-1c-eMb" id="zGf-3d-4HT"/>
+                        <outlet property="scrollView" destination="S96-xE-MUt" id="1Je-69-Vtc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xjo-o6-Pmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1439.2" y="-144.3778110944528"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CO4-3F-12d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jct-eg-5Nd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IHJ-on-9jD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jTc-lK-lWq" kind="relationship" relationship="rootViewController" id="iYt-xw-wsW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhV-YQ-YUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="-144.3778110944528"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="close" width="25" height="25"/>
+    </resources>
+</document>

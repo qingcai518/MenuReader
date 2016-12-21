@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MainController: UIViewController {
     @IBOutlet weak var cameraBtn: UIButton!
@@ -27,15 +28,20 @@ class MainController: UIViewController {
         present(picker, animated: true, completion: nil)
     }
     
-    private func setPickerView() {
-        
+    fileprivate func toResultPage(image: UIImage) {
+        let storyboard = UIStoryboard(name: "Result", bundle: nil)
+        guard let navigation = storyboard.instantiateInitialViewController() as? UINavigationController else {return}
+        guard let result = navigation.viewControllers.first as? ResultController else {return}
+        result.image = image
+        present(navigation, animated: true, completion: nil)
     }
 }
 
 extension MainController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        dismiss(animated: true, completion: nil)
+        toResultPage(image: image)
     }
 }
 
