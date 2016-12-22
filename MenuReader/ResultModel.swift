@@ -20,7 +20,7 @@ class ResultModel {
     func createRequest(image: UIImage) {
         // Create our request URL
         let imageBase64 = base64EncodeImage(image)
-        var request = URLRequest(url: googleURL)
+        var request = URLRequest(url: AppUtility.getGoogleVisionUrl())
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
@@ -107,7 +107,10 @@ class ResultModel {
                 return self.delegate.failed(error: NSError(domain: "fail to get data from json", code: 1003, userInfo: nil))
             } else {
                 let response = json["responses"][0]
+                
                 let annocations = response["textAnnotations"]
+                
+                print("result = \(annocations)")
                 
                 if annocations == JSON.null {
                     return self.delegate.complete(result: nil)
