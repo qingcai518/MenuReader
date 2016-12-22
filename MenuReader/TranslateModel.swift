@@ -9,16 +9,9 @@
 import Foundation
 import Alamofire
 
-protocol TranslateModelDelegate {
-    func complete(result: String?)
-    func failed(error: NSError)
-}
-
 
 class TranslateModel {
-    var delegate : TranslateModelDelegate!
-    
-    func doTranslate(source: String, language: Language) {
+    func doTranslate(source: String, language: Language, completion: @escaping (_ result: String?, _ errorMsg: String?) -> Void) {
         let url = "https://www.googleapis.com/language/translate/v2"
         let params = ["key":googleAPIKey, "target":language.rawValue, "q":source]
 
@@ -27,27 +20,31 @@ class TranslateModel {
             "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
         ]
         
-        Alamofire.request(url, parameters: params, headers: headers).responseJSON { [unowned self] response in
+        Alamofire.request(url, parameters: params, headers: headers).responseJSON { response in
             if let error = response.result.error {
-                return self.delegate.failed(error: error as NSError)
+                return completion(nil, error.localizedDescription)
             }
             
             guard let result = response.result.value as? NSDictionary else {
-                return self.delegate.failed(error: NSError(domain: "fail to get result.", code: 1005, userInfo: nil))
+                return completion(nil, "fail to get result.")
             }
             
             guard let data = result["data"] as? NSDictionary else {
-                 return self.delegate.failed(error: NSError(domain: "fail to get data.", code: 1005, userInfo: nil))
+                return completion(nil, "fail to get data.")
             }
             
-            if let translations = data["translations"] as? NSDictionary {
-                guard let translatedText = translations["translatedText"] as? String else {
-                    return self.delegate.complete(result: "")
+            if let translations = data["translations"] as? NSArray {
+                guard let translation = translations[0] as? NSDictionary else {
+                    return completion("", nil)
+                }
+                guard let translatedText = translation["translatedText"] as? String else {
+                    return completion("", nil)
                 }
                 
-                return self.delegate.complete(result: translatedText)
+                return completion(translatedText, nil)
             } else {
-                return self.delegate.complete(result: "")
+                print("data[translations] = \(data["translations"])")
+                return completion("", nil)
             }
         }
     }
