@@ -9,6 +9,9 @@
 import UIKit
 
 class TranslateController: ViewController {
+    @IBOutlet weak var resultLbl: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     var text = ""
     var language = Language.ChineseSimplified
     
@@ -16,7 +19,6 @@ class TranslateController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         translate()
     }
     
@@ -25,16 +27,22 @@ class TranslateController: ViewController {
     }
     
     private func translate() {
-        model.doTranslate(source: text, language: language)
-    }
-}
-
-extension TranslateController: TranslateModelDelegate {
-    func failed(error: NSError) {
-        print("error = \(error.localizedDescription)")
-    }
-    
-    func complete(result: String?) {
-        print("result = \(result)")
+        indicator.startAnimating()
+        
+        model.doTranslate(source: text, language: language) { [weak self] result, errorMsg in
+            self?.indicator.stopAnimating()
+            
+            if let msg = errorMsg {
+                print("error = \(msg)")
+                return
+            }
+            
+            guard let translatedText = result else {
+                print("error occours.")
+                return
+            }
+            
+            self?.resultLbl.text = translatedText
+        }
     }
 }
