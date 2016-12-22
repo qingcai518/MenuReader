@@ -10,12 +10,17 @@
 		3C2AFC0E1E0A67510079C904 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2AFC0D1E0A67510079C904 /* Result.storyboard */; };
 		3C2AFC101E0A69B40079C904 /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFC0F1E0A69B40079C904 /* ResultController.swift */; };
 		3C2AFC121E0A6C830079C904 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFC111E0A6C830079C904 /* ResultModel.swift */; };
+		3C2AFC151E0B6A960079C904 /* Translate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2AFC141E0B6A960079C904 /* Translate.storyboard */; };
+		3C2AFC171E0B6B2C0079C904 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFC161E0B6B2C0079C904 /* ViewController.swift */; };
+		3C2AFC191E0B6B730079C904 /* TranslateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2AFC181E0B6B730079C904 /* TranslateController.swift */; };
 		3C50DD8B1E0A59A60088BD92 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C50DD8A1E0A59A60088BD92 /* AppConstants.swift */; };
 		3C689EEC1E09299C00B9438D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C689EEB1E09299C00B9438D /* AppDelegate.swift */; };
 		3C689EEE1E09299C00B9438D /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C689EED1E09299C00B9438D /* MainController.swift */; };
 		3C689EF11E09299C00B9438D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C689EEF1E09299C00B9438D /* Main.storyboard */; };
 		3C689EF31E09299C00B9438D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C689EF21E09299C00B9438D /* Assets.xcassets */; };
 		3C689EF61E09299C00B9438D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C689EF41E09299C00B9438D /* LaunchScreen.storyboard */; };
+		3CC11A341E0B76A70038CFF0 /* TranslateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC11A331E0B76A70038CFF0 /* TranslateModel.swift */; };
+		3CC11A361E0B786A0038CFF0 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC11A351E0B786A0038CFF0 /* AppUtility.swift */; };
 		9248CDE066A2AFF471995BCF /* Pods_MenuReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D57281ECA3DC238A50ECE1E /* Pods_MenuReader.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +29,11 @@
 		3C2AFC0D1E0A67510079C904 /* Result.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		3C2AFC0F1E0A69B40079C904 /* ResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
 		3C2AFC111E0A6C830079C904 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		3C2AFC141E0B6A960079C904 /* Translate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Translate.storyboard; sourceTree = "<group>"; };
+		3C2AFC161E0B6B2C0079C904 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3C2AFC181E0B6B730079C904 /* TranslateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateController.swift; sourceTree = "<group>"; };
 		3C50DD8A1E0A59A60088BD92 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		3C684B8E1E0BACCB0025A31B /* MenuReader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MenuReader-Bridging-Header.h"; sourceTree = "<group>"; };
 		3C689EE81E09299C00B9438D /* MenuReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C689EEB1E09299C00B9438D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C689EED1E09299C00B9438D /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -32,6 +41,8 @@
 		3C689EF21E09299C00B9438D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C689EF51E09299C00B9438D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C689EF71E09299C00B9438D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC11A331E0B76A70038CFF0 /* TranslateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateModel.swift; sourceTree = "<group>"; };
+		3CC11A351E0B786A0038CFF0 /* AppUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		C7482FD9186B0CC386E66591 /* Pods-MenuReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuReader/Pods-MenuReader.release.xcconfig"; sourceTree = "<group>"; };
 		FEB8E2141F6B47B1D5605E58 /* Pods-MenuReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuReader/Pods-MenuReader.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +69,16 @@
 			name = ResultPage;
 			sourceTree = "<group>";
 		};
+		3C2AFC131E0B6A7D0079C904 /* TranslatePage */ = {
+			isa = PBXGroup;
+			children = (
+				3C2AFC141E0B6A960079C904 /* Translate.storyboard */,
+				3C2AFC181E0B6B730079C904 /* TranslateController.swift */,
+				3CC11A331E0B76A70038CFF0 /* TranslateModel.swift */,
+			);
+			name = TranslatePage;
+			sourceTree = "<group>";
+		};
 		3C689EDF1E09299C00B9438D = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +103,12 @@
 				3C689EEB1E09299C00B9438D /* AppDelegate.swift */,
 				3C689EF71E09299C00B9438D /* Info.plist */,
 				3C689EF41E09299C00B9438D /* LaunchScreen.storyboard */,
+				3C684B8E1E0BACCB0025A31B /* MenuReader-Bridging-Header.h */,
 				3C689EF21E09299C00B9438D /* Assets.xcassets */,
 				3C689EFD1E092A6F00B9438D /* Common */,
 				3C689EFE1E092A7600B9438D /* MainPage */,
 				3C2AFC0C1E0A672F0079C904 /* ResultPage */,
+				3C2AFC131E0B6A7D0079C904 /* TranslatePage */,
 			);
 			path = MenuReader;
 			sourceTree = "<group>";
@@ -94,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				3C50DD8A1E0A59A60088BD92 /* AppConstants.swift */,
+				3CC11A351E0B786A0038CFF0 /* AppUtility.swift */,
+				3C2AFC161E0B6B2C0079C904 /* ViewController.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -101,8 +126,8 @@
 		3C689EFE1E092A7600B9438D /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				3C689EED1E09299C00B9438D /* MainController.swift */,
 				3C689EEF1E09299C00B9438D /* Main.storyboard */,
+				3C689EED1E09299C00B9438D /* MainController.swift */,
 			);
 			name = MainPage;
 			sourceTree = "<group>";
@@ -160,6 +185,7 @@
 					3C689EE71E09299C00B9438D = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 2RW8Q6Y7W7;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -189,6 +215,7 @@
 			files = (
 				3C689EF61E09299C00B9438D /* LaunchScreen.storyboard in Resources */,
 				3C689EF31E09299C00B9438D /* Assets.xcassets in Resources */,
+				3C2AFC151E0B6A960079C904 /* Translate.storyboard in Resources */,
 				3C689EF11E09299C00B9438D /* Main.storyboard in Resources */,
 				3C2AFC0E1E0A67510079C904 /* Result.storyboard in Resources */,
 			);
@@ -249,11 +276,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2AFC171E0B6B2C0079C904 /* ViewController.swift in Sources */,
 				3C2AFC101E0A69B40079C904 /* ResultController.swift in Sources */,
+				3CC11A361E0B786A0038CFF0 /* AppUtility.swift in Sources */,
 				3C689EEE1E09299C00B9438D /* MainController.swift in Sources */,
 				3C50DD8B1E0A59A60088BD92 /* AppConstants.swift in Sources */,
 				3C2AFC121E0A6C830079C904 /* ResultModel.swift in Sources */,
 				3C689EEC1E09299C00B9438D /* AppDelegate.swift in Sources */,
+				3CC11A341E0B76A70038CFF0 /* TranslateModel.swift in Sources */,
+				3C2AFC191E0B6B730079C904 /* TranslateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,12 +407,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FEB8E2141F6B47B1D5605E58 /* Pods-MenuReader.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2RW8Q6Y7W7;
 				INFOPLIST_FILE = MenuReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kaka.MenuReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MenuReader/MenuReader-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -390,12 +425,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C7482FD9186B0CC386E66591 /* Pods-MenuReader.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 2RW8Q6Y7W7;
 				INFOPLIST_FILE = MenuReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kaka.MenuReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MenuReader/MenuReader-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

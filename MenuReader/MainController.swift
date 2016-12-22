@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class MainController: UIViewController {
+class MainController: ViewController {
     @IBOutlet weak var cameraBtn: UIButton!
 
     override func viewDidLoad() {
