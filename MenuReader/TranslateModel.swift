@@ -11,40 +11,52 @@ import Alamofire
 
 
 class TranslateModel {
-    func doTranslate(source: String, language: Language, completion: @escaping (_ result: String?, _ errorMsg: String?) -> Void) {
+    var translateInfos = [TranslateInfo]()
+    
+    func doTranslate(source: String, language: Language, completion: @escaping (_ msg: String?) -> Void) {
         let url = "https://www.googleapis.com/language/translate/v2"
-        let params = ["key":googleAPIKey, "target":language.rawValue, "q":source]
-
-        let headers:HTTPHeaders = [
-            "Content-Type": "application/json",
-            "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
-        ]
+        let textArray = source.components(separatedBy: "\n")
         
-        Alamofire.request(url, parameters: params, headers: headers).responseJSON { response in
-            if let error = response.result.error {
-                return completion(nil, error.localizedDescription)
-            }
+        for text in textArray {
+            let info = TranslateInfo(source: text)
+            translateInfos.append(info)
+        }
+        
+        for info in translateInfos {
+            let params = ["key":googleAPIKey, "target":language.rawValue, "q":info.source]
             
-            guard let result = response.result.value as? NSDictionary else {
-                return completion(nil, "fail to get result.")
-            }
+            let headers:HTTPHeaders = [
+                "Content-Type": "application/json",
+                "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? ""
+            ]
             
-            guard let data = result["data"] as? NSDictionary else {
-                return completion(nil, "fail to get data.")
-            }
-            
-            if let translations = data["translations"] as? NSArray {
-                guard let translation = translations[0] as? NSDictionary else {
-                    return completion("", nil)
-                }
-                guard let translatedText = translation["translatedText"] as? String else {
-                    return completion("", nil)
+            Alamofire.request(url, parameters: params, headers: headers).responseJSON { response in
+                if let error = response.result.error {
+                    return completion(error.localizedDescription)
                 }
                 
-                return completion(translatedText, nil)
-            } else {
-                print("data[translations] = \(data["translations"])")
-                return completion("", nil)
+                guard let result = response.result.value as? NSDictionary else {
+                    return completion("fail to get result from response.")
+                }
+                
+                guard let data = result["data"] as? NSDictionary else {
+                    return completion("fail to get data from result.")
+                }
+                
+                guard let translations = data["translations"] as? NSArray else {
+                    return completion("fail to get translations from data.")
+                }
+                
+                guard let translation = translations[0] as? NSDictionary else {
+                    return completion("fail to get translation from translations.")
+                }
+                
+                guard let translatedText = translation["translatedText"] as? String else {
+                    return completion("fail to get text from translation.")
+                }
+                
+                info.target.value = translatedText
+                return completion(nil)
             }
         }
     }

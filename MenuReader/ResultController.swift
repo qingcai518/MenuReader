@@ -2,99 +2,102 @@
 //  ResultController.swift
 //  MenuReader
 //
-//  Created by RN-079 on 2016/12/21.
-//  Copyright © 2016年 RN-079. All rights reserved.
+//  Created by RN-079 on 2017/01/04.
+//  Copyright © 2017年 RN-079. All rights reserved.
 //
 
 import UIKit
-import SwiftyJSON
+import RxSwift
 
 class ResultController: ViewController {
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView1 : UITableView!
+    @IBOutlet weak var tableView2 : UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var translateView: UIView!
-    @IBOutlet weak var changeBtn: UIButton!
-    @IBOutlet weak var translateBtn: UIButton!
-    
-    let model = ResultModel()
-    var image: UIImage!
-    var language = Language.ChineseSimplified
-    
-    @IBAction func doClose() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func doChange() {
-        print("change language.")
-    }
 
-    @IBAction func doTranslate() {
-        performSegue(withIdentifier: "toTranslate", sender: nil)
-    }
+    let model = ResultModel()
+    var results = [String]()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toTranslate" {
-            guard let next = segue.destination as? TranslateController else {return}
-            next.text = textView.text
-            next.language = language
-        }
-    }
+    // params.
+    var image : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
+        setTableView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    private func setView() {
+    private func getData() {
         indicator.startAnimating()
         model.createRequest(image: image)
-        model.delegate = self
-        
-        // 翻译后的文字
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        textView.layer.borderWidth = 0.5
-        
-        // 图片
-        let width = screenWidth - 2 * 16
-        let height = (width / image.size.width) * image.size.height
-        let imageView = UIImageView(frame: CGRect(x: 16, y: 0, width: width, height: height))
-        
-        imageView.image = image
-        scrollView.addSubview(imageView)
-        scrollView.contentSize = CGSize(width: screenWidth, height: height + 16)
-        
-        // translate zone.
-        translateView.backgroundColor = UIColor.init(white: 0, alpha: 0.8)
-        
-        if let lngStr = UserDefaults.standard.string(forKey: UDKey.Language) {
-            if let lng = Language(rawValue: lngStr) {language = lng}
-        }
     }
     
-    private func showAlert(msg: String) {
-        let controller = UIAlertController(title: "Fail", message: "msg", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        controller.addAction(action)
+    private func setTableView() {
+        tableView1.tableFooterView = UIView()
+        tableView1.delegate = self
+        tableView1.dataSource = self
         
-        present(controller, animated: true, completion: nil)
+        tableView2.tableFooterView = UIView()
+        tableView2.delegate = self
+        tableView2.dataSource = self
+        
+        model.delegate = self
     }
 }
 
 extension ResultController : ResultModelDelegate {
-    func failed(error: NSError) {
-        indicator.stopAnimating()
-        print("error = \(error.domain)")
-    }
-    
     func complete(result: String?) {
         indicator.stopAnimating()
-        textView.text = result
+        guard let contentArray = result?.components(separatedBy: "\n") else {return}
+        results = contentArray
+        tableView1.reloadData()
+    }
+    
+    func failed(error: NSError) {
+        indicator.stopAnimating()
+        print("error = \(error.localizedDescription)")
+    }
+}
+
+extension ResultController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (tableView === tableView1) {
+            return 44
+        } else {
+            let width = screenWidth - 2 * 12
+            let height = (width / image.size.width ) * image.size.height
+            
+            return height + 12
+        }
+    }
+}
+
+extension ResultController : UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (tableView === tableView1) {
+            return results.count
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (tableView == tableView1) {
+            let info = results[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultCell
+            cell.resultTf.text = info
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageCell
+            cell.pictureView.image = self.image
+            return cell
+        }
     }
 }
