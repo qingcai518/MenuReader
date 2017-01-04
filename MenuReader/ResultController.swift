@@ -54,7 +54,14 @@ extension ResultController : ResultModelDelegate {
     func complete(result: String?) {
         indicator.stopAnimating()
         guard let contentArray = result?.components(separatedBy: "\n") else {return}
-        results = contentArray
+        
+        for content in contentArray {
+            if (content.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "") {
+                continue
+            }
+            
+            results.append(content)
+        }
         
         print("results = \(results)")
         
