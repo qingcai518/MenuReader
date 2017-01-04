@@ -22,8 +22,10 @@ class ResultController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setTableView()
+        
+        // データを取得する.
+        getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +55,9 @@ extension ResultController : ResultModelDelegate {
         indicator.stopAnimating()
         guard let contentArray = result?.components(separatedBy: "\n") else {return}
         results = contentArray
+        
+        print("results = \(results)")
+        
         tableView1.reloadData()
     }
     
