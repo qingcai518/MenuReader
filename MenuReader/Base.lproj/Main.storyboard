@@ -44,10 +44,19 @@
                     </view>
                     <connections>
                         <outlet property="cameraBtn" destination="qNW-K4-UOn" id="fwU-3X-e2h"/>
+                        <segue destination="Mxj-Bb-QMu" kind="show" identifier="ToResult" id="qpq-Vu-GWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Result-->
+        <scene sceneID="xwj-F2-vGM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Result" id="Mxj-Bb-QMu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XCN-hZ-WAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="751" y="-3"/>
         </scene>
     </scenes>
     <resources>
