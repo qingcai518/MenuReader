@@ -13,6 +13,7 @@ class CameraController: ViewController {
     @IBOutlet weak var flashBtn: UIButton!
     @IBOutlet weak var switchBtn: UIButton!
     @IBOutlet weak var cameraBtn: UIButton!
+    @IBOutlet weak var albumBtn: UIButton!
     @IBOutlet weak var cameraView: UIView!
     
     var imagePicker: UIImagePickerController!
@@ -45,6 +46,11 @@ class CameraController: ViewController {
     @IBAction func doCamera() {
         if (imagePicker == nil) {return}
         imagePicker.takePicture()
+    }
+    
+    @IBAction func doAlbum() {
+        let next = PhotoController()
+        self.present(next, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

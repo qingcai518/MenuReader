@@ -13,6 +13,7 @@ import RxCocoa
 class ResultCell: UITableViewCell {
     @IBOutlet weak var resultTf: UITextField!
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var checkboxView: UIImageView!
     
     var disposeBag = DisposeBag()
     

@@ -31,7 +31,7 @@
                                         </constraints>
                                         <state key="normal" image="close_white"/>
                                         <connections>
-                                            <action selector="doClose" destination="eO0-lv-ELv" eventType="touchUpInside" id="aMo-uM-bZi"/>
+                                            <action selector="doClose" destination="eO0-lv-ELv" eventType="touchUpInside" id="fj2-9v-C6C"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdt-nM-iBu">
@@ -41,7 +41,7 @@
                                         </constraints>
                                         <state key="normal" image="flash_auto"/>
                                         <connections>
-                                            <action selector="doFlash" destination="eO0-lv-ELv" eventType="touchUpInside" id="rV4-MN-diJ"/>
+                                            <action selector="doFlash" destination="eO0-lv-ELv" eventType="touchUpInside" id="ghP-om-x4V"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g98-Xd-yrn">
@@ -51,7 +51,7 @@
                                         </constraints>
                                         <state key="normal" image="reload"/>
                                         <connections>
-                                            <action selector="doSwitch" destination="eO0-lv-ELv" eventType="touchUpInside" id="smm-Dl-vOG"/>
+                                            <action selector="doSwitch" destination="eO0-lv-ELv" eventType="touchUpInside" id="vEb-LX-gNi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,19 +82,32 @@
                                         </constraints>
                                         <state key="normal" image="camera"/>
                                         <connections>
-                                            <action selector="doCamera" destination="eO0-lv-ELv" eventType="touchUpInside" id="be0-JT-Pbz"/>
+                                            <action selector="doCamera" destination="eO0-lv-ELv" eventType="touchUpInside" id="aMG-2F-Ptq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0w-VB-I9S">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="8vd-9f-TZO"/>
+                                        </constraints>
+                                        <state key="normal" image="album"/>
+                                        <connections>
+                                            <action selector="doAlbum" destination="eO0-lv-ELv" eventType="touchUpInside" id="KVS-Oq-XNo"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="fX5-60-52S" firstAttribute="top" secondItem="4jx-45-cD8" secondAttribute="top" id="6uh-MJ-zhE"/>
+                                    <constraint firstAttribute="bottom" secondItem="o0w-VB-I9S" secondAttribute="bottom" id="LUc-8k-Fh7"/>
                                     <constraint firstItem="kmz-B5-l2b" firstAttribute="centerX" secondItem="4jx-45-cD8" secondAttribute="centerX" id="Ura-bl-j5A"/>
                                     <constraint firstItem="kmz-B5-l2b" firstAttribute="centerY" secondItem="4jx-45-cD8" secondAttribute="centerY" id="Ymo-3z-1Ot"/>
                                     <constraint firstItem="fX5-60-52S" firstAttribute="centerX" secondItem="4jx-45-cD8" secondAttribute="centerX" id="bjj-os-g8x"/>
                                     <constraint firstAttribute="height" constant="130" id="drM-ni-f2A"/>
+                                    <constraint firstItem="o0w-VB-I9S" firstAttribute="top" secondItem="4jx-45-cD8" secondAttribute="top" id="eNF-yu-PKy"/>
                                     <constraint firstAttribute="bottom" secondItem="fX5-60-52S" secondAttribute="bottom" id="eRo-IF-Zbs"/>
                                     <constraint firstItem="fX5-60-52S" firstAttribute="centerY" secondItem="4jx-45-cD8" secondAttribute="centerY" id="eXa-7v-9AQ"/>
+                                    <constraint firstItem="o0w-VB-I9S" firstAttribute="leading" secondItem="4jx-45-cD8" secondAttribute="leading" id="uO5-jQ-VRV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0N-yG-nn6">
@@ -119,11 +132,12 @@
                     <navigationItem key="navigationItem" id="Ql5-gB-wLD"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="cameraBtn" destination="fX5-60-52S" id="Abu-F3-Ioj"/>
-                        <outlet property="cameraView" destination="m0N-yG-nn6" id="ucO-go-mZI"/>
-                        <outlet property="closeBtn" destination="RNW-C6-z6e" id="iId-d0-4x1"/>
-                        <outlet property="flashBtn" destination="hdt-nM-iBu" id="VJS-Ti-xSa"/>
-                        <outlet property="switchBtn" destination="g98-Xd-yrn" id="J1B-v1-YBq"/>
+                        <outlet property="albumBtn" destination="o0w-VB-I9S" id="W05-qk-tUM"/>
+                        <outlet property="cameraBtn" destination="fX5-60-52S" id="YQD-Ba-9IL"/>
+                        <outlet property="cameraView" destination="m0N-yG-nn6" id="Qup-cx-Vin"/>
+                        <outlet property="closeBtn" destination="RNW-C6-z6e" id="enC-9A-Te6"/>
+                        <outlet property="flashBtn" destination="hdt-nM-iBu" id="P2s-X2-4Qb"/>
+                        <outlet property="switchBtn" destination="g98-Xd-yrn" id="DfB-iB-GRL"/>
                         <segue destination="0LF-Rt-Iay" kind="show" identifier="ToResult" id="ZrF-Ru-Zr2"/>
                     </connections>
                 </viewController>
@@ -159,6 +173,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="album" width="28" height="24"/>
         <image name="camera" width="28" height="22"/>
         <image name="circle_red" width="67" height="67"/>
         <image name="close_white" width="25" height="25"/>

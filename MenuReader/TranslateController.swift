@@ -2,18 +2,17 @@
 //  TranslateController.swift
 //  MenuReader
 //
-//  Created by RN-079 on 2016/12/22.
-//  Copyright © 2016年 RN-079. All rights reserved.
+//  Created by RN-079 on 2017/01/05.
+//  Copyright © 2017年 RN-079. All rights reserved.
 //
 
 import UIKit
 
 class TranslateController: ViewController {
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var text = ""
-    var language = Language.ChineseSimplified
+    // 通訳前の文字列の配列.
+    var sources = [String]()
     
     let model = TranslateModel()
     
@@ -21,9 +20,12 @@ class TranslateController: ViewController {
         super.viewDidLoad()
         
         setTableView()
-        translate()
+        model.doTranslate(sources: sources, language: .ChineseSimplified) { [weak self] msg in
+            if let errorMsg = msg {print("error = \(errorMsg)")}
+            self?.tableView.reloadData()
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -33,21 +35,15 @@ class TranslateController: ViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
-    private func translate() {
-        indicator.startAnimating()
-        
-        model.doTranslate(source: text, language: language) { [weak self] msg in
-            self?.indicator.stopAnimating()
-            if let errorMsg = msg {return print("error = \(errorMsg)")}
-            self?.tableView.reloadData()
-        }
-    }
 }
 
 extension TranslateController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        let info = model.translateInfos[indexPath.row]
+        let sourceHeight = AppUtility.getTextHeight(text: info.source, width: screenWidth - 2 * 12, font: UIFont.Helvetica12())
+        let targetHeight = AppUtility.getTextHeight(text: info.target.value, width: screenWidth - 52, font: UIFont.Helvetica14())
+        
+        return 12 + sourceHeight + 12 + targetHeight + 12 + 20
     }
 }
 
@@ -63,10 +59,8 @@ extension TranslateController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let info = model.translateInfos[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as! TranslateCell
-        let result = info.target.asObservable()
-        result.subscribe(onNext: { value in
-            cell.contentLbl.text = value
-        }, onError: nil, onCompleted: nil, onDisposed: nil).addDisposableTo(disposeBag)
+        cell.sourceLbl.text = info.source
+        cell.targetLbl.text = info.target.value
         
         return cell
     }

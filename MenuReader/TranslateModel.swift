@@ -13,12 +13,10 @@ import Alamofire
 class TranslateModel {
     var translateInfos = [TranslateInfo]()
     
-    func doTranslate(source: String, language: Language, completion: @escaping (_ msg: String?) -> Void) {
+    func doTranslate(sources: [String], language: Language, completion: @escaping (_ msg: String?) -> Void) {
         let url = "https://www.googleapis.com/language/translate/v2"
-        let textArray = source.components(separatedBy: "\n")
-        
-        for text in textArray {
-            let info = TranslateInfo(source: text)
+        for source in sources {
+            let info = TranslateInfo(source: source)
             translateInfos.append(info)
         }
         
