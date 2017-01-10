@@ -45,6 +45,10 @@ extension TranslateController : UITableViewDelegate {
         
         return 12 + sourceHeight + 12 + targetHeight + 12 + 20
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension TranslateController : UITableViewDataSource {
